@@ -1,4 +1,4 @@
-class Ticket < ApplicationRecord
+class Ticket < ApplicationRecord  # A ticket, in a region, with resource requirements(category), may belong to an organization, (I consider it like a work order)
 
   belongs_to :region
   belongs_to :resource_category

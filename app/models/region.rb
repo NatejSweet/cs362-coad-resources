@@ -1,4 +1,4 @@
-class Region < ApplicationRecord
+class Region < ApplicationRecord  #a literal region for describing location of tickets
 
   has_many :tickets
 

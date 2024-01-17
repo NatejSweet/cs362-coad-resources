@@ -1,4 +1,4 @@
-class Organization < ApplicationRecord
+class Organization < ApplicationRecord  #an organization has users and tickets as well as resource categories, a medium for users to work on tickets
 
   attr_accessor :agreement_one, :agreement_two, :agreement_three, :agreement_four, :agreement_five, :agreement_six, :agreement_seven, :agreement_eight
 

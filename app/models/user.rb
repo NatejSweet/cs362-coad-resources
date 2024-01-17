@@ -1,4 +1,4 @@
-class User < ApplicationRecord
+class User < ApplicationRecord  # a user could belong to an organization, or be their own role
 
   enum role: [:admin, :organization]
   after_initialize :set_default_role, :if => :new_record?
