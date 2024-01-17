@@ -6,5 +6,5 @@ RSpec.describe User, type: :model do
     it "exists" do
         expect(User).to_not be_nil
     end
-
+    #push test
 end
