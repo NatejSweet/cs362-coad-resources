@@ -1,4 +1,4 @@
-class ResourceCategory < ApplicationRecord
+class ResourceCategory < ApplicationRecord    # describes the requiremnts of a ticket and the capabilities of an organization
 
   has_and_belongs_to_many :organizations
   has_many :tickets
