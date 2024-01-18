@@ -17,4 +17,8 @@ RSpec.describe Region, type: :model do
     result = region.to_s
   end
 
+  it "has tickets" do
+    expect(Region).to respond_to(:tickets)
+  end
+
 end
