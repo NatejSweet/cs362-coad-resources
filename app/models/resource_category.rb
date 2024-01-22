@@ -1,7 +1,7 @@
 class ResourceCategory < ApplicationRecord    # describes the requiremnts of a ticket and the capabilities of an organization
 
-  has_and_belongs_to_many :organizations
-  has_many :tickets
+  has_and_belongs_to_many :organizations   #n:m
+  has_many :tickets    #1:n
 
   validates_presence_of :name
   validates_length_of :name, minimum: 1, maximum: 255, on: :create

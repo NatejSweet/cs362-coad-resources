@@ -3,7 +3,7 @@ class User < ApplicationRecord  # a user could belong to an organization, or be 
   enum role: [:admin, :organization]
   after_initialize :set_default_role, :if => :new_record?
 
-  belongs_to :organization, optional: true
+  belongs_to :organization, optional: true    #1:1
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,

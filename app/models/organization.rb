@@ -7,9 +7,9 @@ class Organization < ApplicationRecord  #an organization has users and tickets a
 
   after_initialize :set_default_status, :if => :new_record?
 
-  has_many :users
-  has_many :tickets
-  has_and_belongs_to_many :resource_categories
+  has_many :users #1:n
+  has_many :tickets  #1:n
+  has_and_belongs_to_many :resource_categories  #n:m
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates_presence_of :email, :name, :phone, :status, :primary_name, :secondary_name, :secondary_phone

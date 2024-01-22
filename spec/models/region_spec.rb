@@ -16,4 +16,6 @@ RSpec.describe Region, type: :model do
     expect(region).to respond_to(:tickets)
   end
 
+    it { should have_many(:tickets) }
+
 end
