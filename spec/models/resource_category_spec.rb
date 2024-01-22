@@ -1,23 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe ResourceCategory, type: :model do
-    let(:ResourceCategory) { ResourceCategory.new }
+    let(:resourceCategory) { ResourceCategory.new }
 
     it "exists" do
-        expect(ResourceCategory).to_not be_nil
+        expect(resourceCategory).to_not be_nil
     end
 
     it "has a name" do
-        expect(ResourceCategory).to respond_to(:name)
+        expect(resourceCategory).to respond_to(:name)
     end
     it "can be active" do 
-        expect(ResourceCategory).to respond_to(:active)
+        expect(resourceCategory).to respond_to(:active)
     end
     it "has organizations" do
-        expect(ResourceCategory).to respond_to(:organizations)
+        expect(resourceCategory).to respond_to(:organizations)
     end
     it "has tickets" do
-        expect(ResourceCategory).to respond_to(:tickets)
+        expect(resourceCategory).to respond_to(:tickets)
     end
     
     
