@@ -43,4 +43,8 @@ RSpec.describe Ticket, type: :model do
         expect(ticket.open?).to be_truthy
     end
 
+    it "responds to Ticket.closed with an array of closed tickets" do
+        expect(Ticket.closed).to eq([])
+    end
+
 end
