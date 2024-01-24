@@ -35,4 +35,12 @@ RSpec.describe Ticket, type: :model do
     it {should belong_to(:resource_category)} 
     it {should belong_to(:organization)} 
 
+    it "validates at least one name" do
+        expect(ticket).to validate_length_of(:name).is_at_least(1)
+    end
+
+    it "responds to open with true" do
+        expect(ticket.open?).to be_truthy
+    end
+
 end

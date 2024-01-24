@@ -16,6 +16,11 @@ RSpec.describe Region, type: :model do
     expect(region).to respond_to(:tickets)
   end
 
-    it { should have_many(:tickets) }
+  it { should have_many(:tickets) }
 
+  it "returns an instance of Region with name 'Unspecified'" do
+    region = Region.unspecified
+    expect(region).to be_an_instance_of(Region)
+    expect(region.name).to eq("Unspecified")
+  end
 end
