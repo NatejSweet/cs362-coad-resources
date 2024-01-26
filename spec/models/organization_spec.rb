@@ -68,10 +68,87 @@ RSpec.describe Organization, type: :model do
     end
 
     it { should have_many(:users) }
-
     it {should have_many(:tickets) }
 
     it { should have_and_belong_to_many(:resource_categories) }
+
+    it 'validates the the presence of email' do
+        expect(organization).to validate_presence_of(:email)
+    end
+
+    it 'validates the the presence of name' do
+        expect(organization).to validate_presence_of(:name)
+    end
+
+    it 'validates the the presence of phone' do
+        expect(organization).to validate_presence_of(:phone)
+    end
+
+    it 'validates the the presence of status' do
+        expect(organization).to validate_presence_of(:status)
+    end
+
+    it 'validates the the presence of primary_name' do
+        expect(organization).to validate_presence_of(:primary_name)
+    end
+
+    it 'validates the the presence of secondary_name' do
+        expect(organization).to validate_presence_of(:secondary_name)
+    end
+
+    it 'validates the the presence of secondary_phone' do
+        expect(organization).to validate_presence_of(:secondary_phone)
+    end
+    
+    it 'validates the length of email is at least 1 but not more than 255' do
+        expect(organization).to validate_length_of(:email).is_at_least(1).is_at_most(255)
+    end
+
+    it 'validates the format of email' do
+     expect(organization).to allow_value("test@email.com").for(:email)
+     expect(organization).to_not allow_value("testemail.com").for(:email)
+    end
+
+    it 'validates the uniqueness of email' do
+        expect(organization).to validate_uniqueness_of(:email).case_insensitive
+    end
+
+    it 'validates the length of name is at least 1 but not more than 255' do
+        expect(organization).to validate_length_of(:name).is_at_least(1).is_at_most(255)
+    end
+
+    it 'validates the uniqueness of name' do
+        expect(organization).to validate_uniqueness_of(:name).case_insensitive
+    end
+
+    it 'validates the length of description is at most 1020' do
+        expect(organization).to validate_length_of(:description).is_at_most(1020)
+    end
+
+    it 'responds to approve' do
+        expect(organization.approve).to eq(:approved)
+    end
+
+    it 'responds to reject' do
+        expect(organization.reject).to eq(:rejected)
+    end
+
+    it 'sets default status if status not set' do
+        organization.status = nil
+        expect(organization.set_default_status).to eq(:submitted)
+    end
+
+    it 'does not set default status if status is set' do
+        organization.status = :approved
+        expect(organization.set_default_status).to eq("approved")
+    end
+
+    it 'responds to to_s' do
+        expect(organization.to_s).to eq(organization.name)
+    end
+
+
+
 
 
 end
