@@ -23,6 +23,12 @@ RSpec.describe ResourceCategory, type: :model do
         it { should have_and_belong_to_many(:organizations) }
         it { should have_many(:tickets) }
 
+        it "returns an instance of ResourceCategory with name 'Unspecified'" do
+          resource_category = ResourceCategory.unspecified
+          expect(resource_category).to be_an_instance_of(ResourceCategory)
+          expect(resource_category.name).to eq("Unspecified")
+        end
+
     
 
 end
