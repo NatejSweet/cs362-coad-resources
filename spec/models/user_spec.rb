@@ -9,7 +9,7 @@ RSpec.describe User, type: :model do
 
     it " has an email" do
         expect(user).to respond_to(:email)
-    endgit 
+    end
 
     it "has a role" do
         expect(user).to respond_to(:role)   
@@ -25,10 +25,12 @@ RSpec.describe User, type: :model do
     
     it { should validate_uniqueness_of(:email)}
 
-    it { should validate_length_of(:password).is_at_least(1)}
+    it { should validate_presence_of(:password)}
+
+    it { should validate_length_of(:password).is_at_least(7)}
 
     it { should validate_length_of(:password).is_at_most(255)}
 
     #it { should expect(user.valid?).to be true }    
     
-end
+    end
