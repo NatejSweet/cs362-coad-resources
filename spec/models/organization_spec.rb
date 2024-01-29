@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
-    let(:organization) { Organization.new }
+    let(:organization) { build(:organization, :name => 'Test Organization') }
 
     it "exists" do
         expect(organization).to_not be_nil
