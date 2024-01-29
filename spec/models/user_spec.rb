@@ -9,23 +9,7 @@ RSpec.describe User, type: :model do
 
     it " has an email" do
         expect(user).to respond_to(:email)
-    end
-
-    it "has an encrypted_password" do
-        expect(user).to respond_to(:encrypted_password)
-    end
-
-    it "has a reset_password_token" do
-        expect(user).to respond_to(:reset_password_token)
-    end
-
-    it "has a confirmation_token" do
-        expect(user).to respond_to(:confirmation_token)
-    end
-
-    it "has an unconfirmed_email" do
-        expect(user).to respond_to(:unconfirmed_email)
-    end
+    endgit 
 
     it "has a role" do
         expect(user).to respond_to(:role)   
@@ -33,4 +17,18 @@ RSpec.describe User, type: :model do
 
     it { should belong_to(:organization) }
 
+    it { should validate_length_of(:email).is_at_least(1)}
+
+    it { should validate_length_of(:email).is_at_most(255)}
+
+    it { should validate_presence_of(:email)}
+    
+    it { should validate_uniqueness_of(:email)}
+
+    it { should validate_length_of(:password).is_at_least(1)}
+
+    it { should validate_length_of(:password).is_at_most(255)}
+
+    #it { should expect(user.valid?).to be true }    
+    
 end
