@@ -1,7 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
-    let(:organization) { build(:organization, :name => 'Test Organization') }
+    FactoryBot.define do
+  factory :organization do
+    name { 'Test Organization' }
+    email { 'test@email.com' }
+    phone { '541-111-1111' }
+    primary_name { 'test primary name' }
+    secondary_name { 'test secondary name' }
+    secondary_phone { '541-222-2222' }
+  end
+end
+    let(:organization) { build(:organization) }
 
     it "exists" do
         expect(organization).to_not be_nil
