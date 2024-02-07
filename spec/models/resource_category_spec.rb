@@ -1,8 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe ResourceCategory, type: :model do
-  let(:resourceCategory) { ResourceCategory.new }
-  
+  FactoryBot.define do
+    factory :resource_category do
+      name { "Test Resource Category" }
+    end
+  end
+  let(:resourceCategory) { build :resource_category }
+
   #verifiers
   it "exists" do
     expect(resourceCategory).to_not be_nil
