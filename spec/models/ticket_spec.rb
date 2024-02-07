@@ -1,7 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
-    let(:ticket) { Ticket.new }
+  FactoryBot.define do
+    factory :ticket do
+      name { "Test Ticket" }
+      description { "Test Description" }
+      phone { "541-111-1111" }
+      region_id { 1 }
+      resource_category_id { 1 }
+      organization_id { 1 }
+    end
+  end
+    let(:ticket) { build :ticket}
 
     it "exists" do
         expect(ticket).to_not be_nil
@@ -64,8 +74,12 @@ RSpec.describe Ticket, type: :model do
     it "responds to captured with true" do     
       expect(ticket.captured?).to_not be_truthy
     end
+
+    it "responds to open with an array of open tickets" do
+        expect(Ticket.open).to eq([])
+    end
     it "responds to Ticket.closed with an array of closed tickets" do
-        expect(Ticket.closed).to eq([])
+        expect(Ticket.closed).to eq([]) 
     end
 
     it "responds to all_organization with an array of all organization tickets that are open" do
