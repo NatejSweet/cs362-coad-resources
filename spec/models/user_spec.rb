@@ -1,15 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-    FactoryBot.define do
-        factory :user do
-            role { :admin }
-            email { 'test@email.com' } 
-            password {'testpassword'}       
-        end
-    end
 
-    let(:user) { build(:user)}
+    let(:user) { build(:user, :admin)}
 
     it {should define_enum_for(:role).with([:admin, :organization])}
 

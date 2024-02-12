@@ -1,12 +1,5 @@
 require 'rails_helper'
-
 RSpec.describe Region, type: :model do
-  FactoryBot.define do
-    factory :region do
-      name { 'Test Region' }
-    end
-  end
-
   let(:region) {build(:region)}
 
   it "exists" do
