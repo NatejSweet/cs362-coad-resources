@@ -91,6 +91,10 @@ RSpec.describe Ticket, type: :model do
     it "responds to resource_category with an array of tickets that have a valid resource category id" do
       expect(Ticket.resource_category(1)).to eq([]) and expect(Ticket.resource_category(1)).to_not eq(nil)
     end
+    it "should return the ticket id" do
+      expect(ticket.to_s).to eq("Ticket #{ticket.id}")
+    end
+
 #end of scopes
 
   end

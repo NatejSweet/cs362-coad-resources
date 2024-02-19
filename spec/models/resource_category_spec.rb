@@ -73,5 +73,8 @@ RSpec.describe ResourceCategory, type: :model do
     resourceCategory.active = false
     expect(resourceCategory.inactive?).to eq(true)
   end
+  it "should return the name of the resource category" do
+    expect(resourceCategory.to_s).to eq(resourceCategory.name)
+  end
   # end of methods
 end
