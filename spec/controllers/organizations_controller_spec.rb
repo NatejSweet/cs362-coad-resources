@@ -81,7 +81,7 @@ RSpec.describe OrganizationsController, type: :controller do
             expect(response).to redirect_to(new_user_session_path)
         end
     end
-    describe "while logged in as an organization" do
+    describe "while logged in as an approved organization" do
         let(:user) { create(:user, :organization_approved) }
         let(:organization) {create(:organization) }
         before(:each) { sign_in user }

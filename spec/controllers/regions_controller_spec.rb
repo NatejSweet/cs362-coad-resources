@@ -71,8 +71,42 @@ RSpec.describe RegionsController, type: :controller do
         end
     end
 
-    describe "while logged in as organization" do
-        let (:user) { create(:user, role: :organization) }
+    describe "while logged in as an approved organization" do
+        let (:user) { create(:user, :organization_approved) }
+        let (:region) { create(:region) }
+        before(:each) { sign_in user }
+        it "should not get index successfully " do
+            get(:index)
+            expect(response).to redirect_to(dashboard_path)
+        end
+        it "should not get show successfully " do
+            get(:show, params: {id: region.id})
+            expect(response).to redirect_to(dashboard_path)
+        end
+        it "should not get new successfully " do
+            get(:new)
+            expect(response).to redirect_to(dashboard_path)
+        end
+        it "should not create new region successfully " do
+            post(:create, params: {region: region.attributes})
+            expect(response).to redirect_to(dashboard_path)
+        end
+        it "should not get edit successfully " do
+            get(:edit, params: {id: region.id})
+            expect(response).to redirect_to(dashboard_path)
+        end
+        it "should not update region successfully " do
+            put(:update, params: {id: region.id, region: region.attributes})
+            expect(response).to redirect_to(dashboard_path)
+        end
+        it "should not destroy region successfully " do
+            delete(:destroy, params: {id: region.id})
+            expect(response).to redirect_to(dashboard_path)
+        end
+    end
+
+    describe "while logged in as an rejected organization" do
+        let (:user) { create(:user, :organization_rejected) }
         let (:region) { create(:region) }
         before(:each) { sign_in user }
         it "should not get index successfully " do
