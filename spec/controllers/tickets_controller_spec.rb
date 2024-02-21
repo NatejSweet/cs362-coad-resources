@@ -38,11 +38,12 @@ RSpec.describe TicketsController, type: :controller do
         end
         
 
-        it "PATCH close" do
+        it "PATCH close (successful ticket.close())" do
             patch(:close, params: {ticket: ticket.attributes, id: ticket.id})
             expect(response).to redirect_to(dashboard_path << '#tickets:open')
         end
 
+        # it "PATCH close (unsuccessful ticket.close())" do
         it "DELETE destroy" do
             delete(:destroy, params: {ticket: ticket.attributes, id: ticket.id})
             expect(response).to redirect_to(dashboard_path << '#tickets')
