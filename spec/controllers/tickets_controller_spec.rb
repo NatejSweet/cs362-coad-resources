@@ -136,7 +136,7 @@ RSpec.describe TicketsController, type: :controller do
         let (:resource_category) { create(:resource_category) }
         let (:ticket) { create(:ticket, region: region, resource_category: resource_category) }
         before(:each) { sign_in user }
-        it "should  get new successfully " do
+        it "should get new successfully " do
             get(:new)
             expect(response).to be_successful
         end
@@ -164,6 +164,5 @@ RSpec.describe TicketsController, type: :controller do
             delete(:destroy, params: {ticket: ticket.attributes, id: ticket.id})
             expect(response).to redirect_to(dashboard_path)
         end
-    end
-        
+    end       
 end

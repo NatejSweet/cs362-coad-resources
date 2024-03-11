@@ -207,5 +207,39 @@ RSpec.describe OrganizationsController, type: :controller do
         end
     end
 
-
+    describe "while not logged in" do 
+        let(:organization) { create(:organization) }
+        it "should redirect GET #index to the login page" do
+            get(:index)
+            expect(response).to redirect_to(new_user_session_path) 
+        end
+        it "should redirect GET #new to the login page" do
+            get(:new)
+            expect(response).to redirect_to(new_user_session_path) 
+        end
+        it "should redirect POST #create to the login page" do
+            post(:create, params: {organization: organization.attributes})
+            expect(response).to redirect_to(new_user_session_path)
+        end
+        it "should redirect GET #edit to the login page" do
+            get(:edit, params: {id: organization.id})
+            expect(response).to redirect_to(new_user_session_path) 
+        end
+        it "should redirect PUT #update to the login page" do
+            put(:update, params: {id: organization.id, organization: organization.attributes})
+            expect(response).to redirect_to(new_user_session_path)
+        end
+        it "should redirect GET #show to the login page" do
+            get(:show, params: {id: organization.id})
+            expect(response).to redirect_to(new_user_session_path)
+        end
+        it "should redirect PUT #approve to the login page" do
+            put(:approve, params: {id: organization.id})
+            expect(response).to redirect_to(new_user_session_path)
+        end
+        it "should redirect PUT #reject to the login page" do
+            put(:reject, params: {id: organization.id, organization: {rejection_reason: "Test Rejection Reason"}})
+            expect(response).to redirect_to(new_user_session_path)
+        end
+    end
 end
